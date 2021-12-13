@@ -14,7 +14,7 @@ const AddContact = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const res = axios.post("/contact", userInfo)
+        axios.post("/contact", userInfo)
             .then(result => console.log(result))
     }
 

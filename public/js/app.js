@@ -5358,7 +5358,7 @@ var AddContact = function AddContact() {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    var res = axios__WEBPACK_IMPORTED_MODULE_0___default().post("/contact", userInfo).then(function (result) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/contact", userInfo).then(function (result) {
       return console.log(result);
     });
   };

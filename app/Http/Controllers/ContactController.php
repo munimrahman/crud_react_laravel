@@ -38,7 +38,7 @@ class ContactController extends Controller
     {
         $contact = new Contact();
         $contact->name = $request->name;
-        $contact->number = $request->number;
+        $contact->mobile = $request->number;
         $contact->save();
         return response()->json(['status' => 200]);
     }
