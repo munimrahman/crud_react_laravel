@@ -25,7 +25,7 @@ const EditContact = () => {
 
     const handleUpdate = e => {
         e.preventDefault();
-        const res = axios.patch(`/contact/${id}`, userInfo)
+        const res = axios.patch(`https://react-laravel-crud.herokuapp.com/contact/${id}`, userInfo)
             .then(result => console.log(result))
     }
     return (

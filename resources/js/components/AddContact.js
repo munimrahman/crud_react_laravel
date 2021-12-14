@@ -15,7 +15,7 @@ const AddContact = () => {
     const handleSubmit = e => {
         e.preventDefault();
         axios.post("https://react-laravel-crud.herokuapp.com/contact", userInfo)
-            .then(result => console.log(result))
+            .then(result => console.log(result.status))
     }
 
     return (
