@@ -7,7 +7,7 @@ const EditContact = () => {
     const [userInfo, setUserInfo] = useState({ name: '', mobile: '' })
 
     useEffect(() => {
-        fetch(`/contact/${id}/edit`)
+        fetch(`https://react-laravel-crud.herokuapp.com/contact/${id}/edit`)
             .then(res => res.json())
             .then(data => setUserInfo(data.contacts))
     }, [])

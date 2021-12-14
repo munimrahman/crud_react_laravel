@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const AllContacts = () => {
     const [users, setUsers] = useState()
     useEffect(async () => {
-        const res = await axios.get("/contact")
+        const res = await axios.get("https://react-laravel-crud.herokuapp.com/contact")
             .then(res => setUsers(res.data.contacts))
     }, [users])
     const handleDelete = id => {
-        const res = axios.delete(`/contact/${id}`)
+        const res = axios.delete(`https://react-laravel-crud.herokuapp.com/contact/${id}`)
             .then(result => console.log(result))
     }
     return (
