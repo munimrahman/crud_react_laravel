@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const AddContact = () => {
     const [userInfo, setUserInfo] = useState({})
+    let navigate = useNavigate();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -15,7 +18,16 @@ const AddContact = () => {
     const handleSubmit = e => {
         e.preventDefault();
         axios.post("https://react-laravel-crud.herokuapp.com/contact", userInfo)
-            .then(result => console.log(result.status))
+            .then(result => {
+                if (result.status === 200) {
+                    swal({
+                        title: "Contact Added Successfully!",
+                        icon: "success",
+                        button: "OK!",
+                    });
+                    navigate("/");
+                }
+            })
     }
 
     return (

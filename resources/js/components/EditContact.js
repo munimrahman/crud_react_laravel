@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const EditContact = () => {
     const { id } = useParams();
     const [userInfo, setUserInfo] = useState({ name: '', mobile: '' })
+    let navigate = useNavigate();
 
     useEffect(() => {
         fetch(`https://react-laravel-crud.herokuapp.com/contact/${id}/edit`)
             .then(res => res.json())
             .then(data => setUserInfo(data.contacts))
     }, [])
-    console.log(userInfo);
+
     const handleNameChange = e => {
         const updatedName = e.target.value;
         const updatedUser = { name: updatedName, mobile: userInfo.mobile }
@@ -26,7 +27,16 @@ const EditContact = () => {
     const handleUpdate = e => {
         e.preventDefault();
         const res = axios.patch(`https://react-laravel-crud.herokuapp.com/contact/${id}`, userInfo)
-            .then(result => console.log(result))
+            .then(result => {
+                if (result.status === 200) {
+                    swal({
+                        title: "Contact Updated Successfully!",
+                        icon: "success",
+                        button: "OK!",
+                    });
+                    navigate("/");
+                }
+            })
     }
     return (
         <div className='w-50 mx-auto mt-2'>
